@@ -1,6 +1,17 @@
 version: '3.8'
 
 services:
+  activemq:
+    image: apache/activemq-classic
+    container_name: activemq
+    ports:
+      - "61616:61616"
+      - "8161:8161"
+    environment:
+      - ACTIVEMQ_ADMIN_LOGIN=admin
+      - ACTIVEMQ_ADMIN_PASSWORD=admin
+      - ACTIVEMQ_MIN_MEMORY=512
+      - ACTIVEMQ_MAX_MEMORY=2048
   mysql:
     image: mysql:8.0
     container_name: mysql-container
@@ -12,3 +23,4 @@ services:
       MYSQL_PASSWORD: mypassword
     ports:
       - "3306:3306"
+
